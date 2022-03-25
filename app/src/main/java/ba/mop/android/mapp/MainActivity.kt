@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.info_button).setOnClickListener {
             showAppInfo()
+            greet()
         }
     }
 
@@ -23,5 +25,9 @@ class MainActivity : AppCompatActivity() {
                     Version name: ${BuildConfig.VERSION_NAME}
                     Version code: ${BuildConfig.VERSION_CODE}
                     """.trimIndent()
+    }
+
+    fun greet() {
+        Toast.makeText(this, "Hello!", Toast.LENGTH_SHORT).show()
     }
 }
