@@ -13,6 +13,9 @@ workflows:
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
-      email:
-        recipients:
-          - azur.haljeta@ministryofprogramming.com
+      firebase:
+        firebase_token: $FIREBASE_TOKEN
+        android:
+          app_id: ANDROID_FIREBASE_APP_ID
+          groups:
+            - MyQAs
