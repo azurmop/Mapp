@@ -1,6 +1,9 @@
 workflows:
   simple-workflow:
     name: Build the android app
+    environment:
+      groups:
+        - MyGroup
     instance_type: mac_mini
     triggering:
       events:
