@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.info_button).setOnClickListener {
             showAppInfo()
-            greet()
         }
     }
 
@@ -27,7 +26,4 @@ class MainActivity : AppCompatActivity() {
                     """.trimIndent()
     }
 
-    fun greet() {
-        Toast.makeText(this, "Hello!", Toast.LENGTH_SHORT).show()
-    }
 }
