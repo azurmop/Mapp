@@ -1,0 +1,14 @@
+workflows:
+  simple-workflow:
+    name: Build the android app
+    scripts:
+      - name: Run tests
+        script: ./gradlew test
+      - name: Build debug apk
+        script: ./gradlew assembleDebug
+    artifacts:
+      - app/build/**/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - azur.haljeta@ministryofprogramming.com
