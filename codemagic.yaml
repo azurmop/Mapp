@@ -19,6 +19,6 @@ workflows:
       firebase:
         firebase_token: $FIREBASE_TOKEN
         android:
-          app_id: ANDROID_FIREBASE_APP_ID
+          app_id: $ANDROID_FIREBASE_APP_ID
           groups:
             - MyQAs
