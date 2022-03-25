@@ -1,6 +1,7 @@
 workflows:
   simple-workflow:
     name: Build the android app
+    instance_type: linux
     scripts:
       - name: Run tests
         script: ./gradlew test
