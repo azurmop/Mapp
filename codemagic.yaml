@@ -8,6 +8,11 @@ workflows:
     triggering:
       events:
         - pull_request
+      cancel_previous_builds: false
+      branch_patterns:
+        - pattern: 'master'
+          include: true
+          source: true
     scripts:
       - name: Run tests
         script: ./gradlew test
