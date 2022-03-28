@@ -18,8 +18,10 @@ workflows:
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
       - name: Run tests
         script: ./gradlew test
-      - name: Build debug apk
-        script: ./gradlew assembleDebug
+      - name: Build release apk
+        script: |
+           echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+          ./gradlew assembleRelease
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
