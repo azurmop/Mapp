@@ -20,8 +20,8 @@ workflows:
         script: ./gradlew test
       - name: Build release apk
         script: |
-           echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-          ./gradlew assembleRelease
+                echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+                ./gradlew assembleRelease
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
