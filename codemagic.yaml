@@ -14,14 +14,14 @@ workflows:
           include: true
           source: false
     scripts:
+      - name: Decode keystore
+        script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
       - name: Run tests
         script: ./gradlew test
       - name: Build release apk
-        script: |
-                echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-                ./gradlew assembleRelease
+        script: ./gradlew assembleRelease
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
