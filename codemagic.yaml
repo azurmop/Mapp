@@ -14,6 +14,8 @@ workflows:
           include: true
           source: false
     scripts:
+      - name: Update version code
+        script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app.gradle
       - name: Run tests
         script: ./gradlew test
       - name: Build debug apk
