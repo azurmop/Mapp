@@ -4,6 +4,12 @@ workflows:
     environment:
       groups:
         - MyGroup
+      vars:
+        CM_KEYSTORE_PATH: /tmp/keystore.keystore
+        CM_KEYSTORE: # Add encrypted keystore file
+        CM_KEYSTORE_PASSWORD: # Add encrypted keystore password
+        CM_KEY_ALIAS: # Add alias name
+        CM_KEY_PASSWORD: # Add encrypted alias password
     instance_type: mac_mini
     triggering:
       events:
