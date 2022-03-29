@@ -4,6 +4,8 @@ definitions:
     script: ./gradlew test
   - &prepare-vars
     CM_KEYSTORE_PATH: /tmp/keystore_placeholder
+  - &caches
+    - $HOME/.gradle/caches
 
 workflows:
   check-pr:
@@ -14,6 +16,9 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
+    cache:
+      cache_paths:
+        *caches
     triggering:
       events:
         - pull_request
@@ -32,6 +37,9 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
+    cache:
+      cache_paths:
+        *caches
     triggering:
       events:
         - push
