@@ -10,6 +10,7 @@ workflows:
     triggering:
       events:
         - pull_request
+        - push
       cancel_previous_builds: false
       branch_patterns:
         - pattern: 'master'
@@ -20,8 +21,8 @@ workflows:
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
-      - name: Run tests
-        script: ./gradlew test
+      #- name: Run tests
+      #  script: ./gradlew test
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
