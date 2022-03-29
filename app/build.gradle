@@ -25,25 +25,44 @@ android {
 
     signingConfigs {
         release {
-            if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
+            if (isInCiCd()) {
                 println("signing: Inside CI")
                 storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
                 storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
                 keyAlias System.getenv()["CM_KEY_ALIAS"]
                 keyPassword System.getenv()["CM_KEY_PASSWORD"]
             } else {
-                println("signing: locally...")
-
                 def encodedContents = keystoreProperties['storeFileEncoded']
                 def command = ["sh", "decode_keystore.sh", encodedContents]
-                def exc = command.execute().text
-
+                command.execute().text
                 storeFile file("decoded_keystore")
                 storePassword keystoreProperties['storePassword']
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
             }
         }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                def buildType = variant.buildType.name
+                def versionName = variant.versionName
+                def versionCode = variant.versionCode
+
+                def fileNameBuilder = new StringBuilder()
+                fileNameBuilder.append("Mapp").append("_")
+                fileNameBuilder.append(versionName).append("-v")
+                fileNameBuilder.append(versionCode).append("_")
+                if (isInCiCd()) {
+                    fileNameBuilder.append(System.getenv()["CM_BRANCH"]).append("_")
+                }
+                if (buildType != "debug") {
+                    fileNameBuilder.append(new Date().format("yyyyddMMHHmm"))
+                }
+                fileNameBuilder.append(".apk")
+                outputFileName = fileNameBuilder.toString()
+            }
+        }
+
     }
 
     buildTypes {
@@ -77,4 +96,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.2.0'
 
+}
+
+static def isInCiCd() {
+    // CI=true is exported by Codemagic
+    return System.getenv()["CI"]
 }
