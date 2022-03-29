@@ -50,10 +50,10 @@ android {
                 println("signing: locally...")
 
                 def encodedContents = keystoreProperties['storeFileEncoded']
-                def command = ["sh", "run.sh", encodedContents]
+                def command = ["sh", "decode_keystore.sh", encodedContents]
                 def exc = command.execute().text
 
-                storeFile file("kestor")
+                storeFile file("decoded_keystore")
                 storePassword keystoreProperties['storePassword']
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
