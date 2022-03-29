@@ -2,6 +2,8 @@ definitions:
   - &run-unit-tests
     name: Run unit tests
     script: ./gradlew test
+  - &prepare-vars
+    CM_KEYSTORE_PATH: /tmp/keystore_placeholder
 
 workflows:
   check-pr:
@@ -9,6 +11,8 @@ workflows:
     environment:
       groups:
         - MyGroup
+      vars:
+        *prepare-vars
     instance_type: mac_mini
     triggering:
       events:
@@ -26,7 +30,7 @@ workflows:
       groups:
         - MyGroup
       vars:
-        CM_KEYSTORE_PATH: /tmp/keystore_placeholder
+        *prepare-vars
     instance_type: mac_mini
     triggering:
       events:
