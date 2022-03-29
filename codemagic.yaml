@@ -2,14 +2,10 @@ definitions:
   - &run-unit-tests
     name: Run unit tests
     script: ./gradlew test
-  - &disable
-    condition: if(false)
 
 workflows:
   check-pr:
-    name: Check PR validity
-    when:
-      *disable
+    name: Validate PR
     environment:
       groups:
         - MyGroup
@@ -26,8 +22,6 @@ workflows:
       - *run-unit-tests
   simple-workflow:
     name: Deploy app
-    when:
-      *disable
     environment:
       groups:
         - MyGroup
@@ -36,7 +30,6 @@ workflows:
     instance_type: mac_mini
     triggering:
       events:
-        - pull_request
         - push
       cancel_previous_builds: false
       branch_patterns:
