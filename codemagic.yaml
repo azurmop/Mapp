@@ -37,9 +37,9 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
-    cache:
-      cache_paths:
-        *caches
+    #cache:
+    #  cache_paths:
+    #    *caches
     triggering:
       events:
         - push
