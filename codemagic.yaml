@@ -53,8 +53,6 @@ workflows:
         script: ./gradlew clean
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-      - name: Keystore checksum
-        script: md5 $CM_KEYSTORE_PATH
       - name: Update version code
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
       - *run-unit-tests
