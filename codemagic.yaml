@@ -1,4 +1,21 @@
 workflows:
+  check-pr:
+    name: Check PR validity
+    environment:
+      groups:
+        - MyGroup
+    instance_type: mac_mini
+    triggering:
+      events:
+        - pull_request
+      cancel_previous_builds: false
+      branch_patterns:
+        - pattern: 'master'
+          include: true
+          source: false
+    scripts:
+      - name: Run unit tests
+        script: ./gradlew test
   simple-workflow:
     name: Build the android app
     environment:
@@ -21,8 +38,8 @@ workflows:
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
-      #- name: Run tests
-      #  script: ./gradlew test
+      - name: Run tests
+        script: ./gradlew test
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
