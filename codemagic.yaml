@@ -2,10 +2,14 @@ definitions:
   - &run-unit-tests
     name: Run unit tests
     script: ./gradlew test
+  - &disable
+    condition: if(false)
 
 workflows:
   check-pr:
     name: Check PR validity
+    when:
+      *disable
     environment:
       groups:
         - MyGroup
@@ -21,7 +25,9 @@ workflows:
     scripts:
       - *run-unit-tests
   simple-workflow:
-    name: Build the android app
+    name: Deploy app
+    when:
+      *disable
     environment:
       groups:
         - MyGroup
