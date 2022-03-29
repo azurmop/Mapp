@@ -5,7 +5,7 @@ definitions:
 
 workflows:
   check-pr:
-    name: Check PR validity
+    name: Validate PR
     environment:
       groups:
         - MyGroup
