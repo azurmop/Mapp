@@ -49,6 +49,8 @@ workflows:
           include: true
           source: false
     scripts:
+      - name: Clean
+        script: ./gradlew clean
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Keystore checksum
