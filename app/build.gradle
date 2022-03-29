@@ -35,11 +35,20 @@ android {
                 def encodedContents = keystoreProperties['storeFileEncoded']
                 def command = ["sh", "decode_keystore.sh", encodedContents]
                 command.execute().text
-                storeFile file("decoded_keystore")
+                storeFile file("../decoded_keystore")
                 storePassword keystoreProperties['storePassword']
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
             }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
 
         android.applicationVariants.all { variant ->
@@ -62,16 +71,6 @@ android {
                 outputFileName = fileNameBuilder.toString()
             }
         }
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
