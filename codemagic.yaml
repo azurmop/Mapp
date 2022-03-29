@@ -14,9 +14,6 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
-    cache:
-      cache_paths:
-        - $HOME/.gradle
     triggering:
       events:
         - pull_request
@@ -35,9 +32,6 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
-    cache:
-      cache_paths:
-        - $HOME/.gradle
     triggering:
       events:
         - push
