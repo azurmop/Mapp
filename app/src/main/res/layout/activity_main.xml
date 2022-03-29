@@ -18,8 +18,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#7986CB"
-        app:strokeWidth="4dp"
         tools:ignore="HardcodedText" />
 
     <TextView
