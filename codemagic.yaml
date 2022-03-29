@@ -55,7 +55,7 @@ workflows:
         script: md5 $CM_KEYSTORE_PATH
       - name: Update version code
         script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
-      # - *run-unit-tests
+      - *run-unit-tests
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
