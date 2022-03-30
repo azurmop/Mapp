@@ -37,9 +37,9 @@ workflows:
       vars:
         *prepare-vars
     instance_type: mac_mini
-    #cache:
-    #  cache_paths:
-    #    *caches
+    cache:
+      cache_paths:
+        *caches
     triggering:
       events:
         - push
@@ -54,7 +54,7 @@ workflows:
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
-        script: sed -i '' "s/versionCode.*/versionCode `date +%s`/g" app/build.gradle
+        script: sed -i '' "s/versionCode=.*/versionCode=`date +%s`/g" version.properties
       - *run-unit-tests
       - name: Build release apk
         script: ./gradlew assembleRelease
