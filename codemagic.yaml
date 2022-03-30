@@ -32,7 +32,7 @@ workflows:
   deploy-workflow:
     name: Deploy app
     when:
-      condition: if(false)
+      condition: 1 != 1
     environment:
       groups:
         - MyGroup
