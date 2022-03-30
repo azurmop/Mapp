@@ -57,6 +57,8 @@ workflows:
                 echo $PROJECT_BUILD_NUMBER
       - name: Clean
         script: ./gradlew clean
+      - name: Print slack token
+        script: echo $SLACK_BOT_TOKEN
       - name: Send a irrelevant Slack message
         script: |
                 curl -X GET -H 'Authorization: Bearer $SLACK_BOT_TOKEN' https://slack.com/api/chat.postMessage?channel=general&as_user=jj&text=hey
