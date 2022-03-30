@@ -49,8 +49,12 @@ workflows:
           include: true
           source: false
     when:
-      condition: event.name.name == 'azurmop'
+      condition: event.pusher.name == "azurmop"
     scripts:
+      - name: Echo Build number
+        script: |
+                echo $BUILD_NUMBER
+                echo $PROJECT_BUILD_NUMBER
       - name: Clean
         script: ./gradlew clean
       - name: Decode keystore
