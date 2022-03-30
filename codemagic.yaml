@@ -63,6 +63,12 @@ workflows:
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
+      slack:
+        channel: '#general'
+        notify_on_build_start: true
+        notify:
+          failure: true
+          success: true
       firebase:
         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
         android:
