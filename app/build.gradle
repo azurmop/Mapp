@@ -53,8 +53,7 @@ android {
 
         applicationVariants.all { variant ->
             variant.outputs.all {
-                println("variant loop " + variant.buildType.name)
-                /*def buildType = variant.buildType.name
+                def buildType = variant.buildType.name
                 def versionName = variant.versionName
                 def versionCode = variant.versionCode
 
@@ -62,14 +61,14 @@ android {
                 fileNameBuilder.append("Mapp").append("_")
                 fileNameBuilder.append(versionName).append("-v")
                 fileNameBuilder.append(versionCode).append("_")
-                if (isInCiCd()) {
+                /*if (isInCiCd()) {
                     fileNameBuilder.append(System.getenv()["CM_BRANCH"]).append("_")
-                }
+                }*/
                 if (buildType != "debug") {
                     fileNameBuilder.append(new Date().format("yyyyddMMHHmm"))
                 }
                 fileNameBuilder.append(".apk")
-                outputFileName = fileNameBuilder.toString()*/
+                outputFileName = fileNameBuilder.toString()
             }
         }
     }
