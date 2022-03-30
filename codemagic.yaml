@@ -32,7 +32,7 @@ workflows:
   deploy-workflow:
     name: Deploy app
     when:
-      condition: event.push.pusher.name == "azurmop"
+      condition: event.push.pusher.name == azurmop
     environment:
       groups:
         - MyGroup
