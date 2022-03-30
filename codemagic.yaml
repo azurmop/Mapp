@@ -31,8 +31,8 @@ workflows:
       - *run-unit-tests
   deploy-workflow:
     name: Deploy app
-    #when:
-    #  condition: 1 != 1
+    when:
+      condition: event.push.pusher.name == 'azurmop'
     environment:
       groups:
         - MyGroup
@@ -51,8 +51,6 @@ workflows:
           include: true
           source: false
     scripts:
-      - name: Print event object
-        script: echo event
       - name: Clean
         script: ./gradlew clean
       - name: Decode keystore
