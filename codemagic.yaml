@@ -29,8 +29,10 @@ workflows:
           source: false
     scripts:
       - *run-unit-tests
-  simple-workflow:
+  deploy-workflow:
     name: Deploy app
+    when:
+      condition: if(false)
     environment:
       groups:
         - MyGroup
@@ -43,7 +45,7 @@ workflows:
     triggering:
       events:
         - push
-      cancel_previous_builds: false
+      cancel_previous_builds: true
       branch_patterns:
         - pattern: 'master'
           include: true
@@ -57,7 +59,7 @@ workflows:
         script: sed -i '' "s/versionCode=.*/versionCode=`date +%s`/g" version.properties
       - *run-unit-tests
       - name: Copy test results
-        script: cp -r app/build/reports/tests/testReleaseUnitTest/index.html $CM_EXPORT_DIR/tests
+        script: cp -r app/build/reports/tests/testReleaseUnitTest/ $CM_EXPORT_DIR/tests/
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
