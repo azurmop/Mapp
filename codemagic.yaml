@@ -32,7 +32,7 @@ workflows:
   deploy-workflow:
     name: Deploy app
     when:
-      condition: event.push.pusher.name == test
+      condition: not event.pull_request.draft
     environment:
       groups:
         - MyGroup
