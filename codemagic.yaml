@@ -10,8 +10,6 @@ definitions:
 workflows:
   check-pr:
     name: Validate PR
-    when:
-      condition: not event.pull_request.draft
     environment:
       groups:
         - MyGroup
@@ -50,6 +48,8 @@ workflows:
         - pattern: 'master'
           include: true
           source: false
+    when:
+      condition: event.name.name == 'azur'
     scripts:
       - name: Clean
         script: ./gradlew clean
