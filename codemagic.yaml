@@ -10,6 +10,8 @@ definitions:
 workflows:
   check-pr:
     name: Validate PR
+    when:
+      condition: not event.pull_request.draft
     environment:
       groups:
         - MyGroup
@@ -31,8 +33,6 @@ workflows:
       - *run-unit-tests
   deploy-workflow:
     name: Deploy app
-    when:
-      condition: not event.pull_request.draft
     environment:
       groups:
         - MyGroup
