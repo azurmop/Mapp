@@ -52,7 +52,7 @@ android {
         }
 
         applicationVariants.all { variant ->
-            variant.outputs.all {
+            /*variant.outputs.all {
                 def buildType = variant.buildType.name
                 def versionName = variant.versionName
                 def versionCode = variant.versionCode
@@ -69,7 +69,7 @@ android {
                 }
                 fileNameBuilder.append(".apk")
                 outputFileName = fileNameBuilder.toString()
-            }
+            }*/
         }
     }
     compileOptions {
