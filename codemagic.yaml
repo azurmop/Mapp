@@ -53,16 +53,13 @@ workflows:
     scripts:
       - name: Echo Build number
         script: |
-                echo $BUILD_NUMBER
-                echo $PROJECT_BUILD_NUMBER
+          echo $BUILD_NUMBER
+          echo $PROJECT_BUILD_NUMBER
       - name: Clean
         script: ./gradlew clean
-      - name: Print command
-        script: |
-                echo "curl -X GET -H 'Authorization: Bearer "$SLACK_BOT_TOKEN"' https://slack.com/api/chat.postMessage?channel=random&text=hi"
       - name: Send a irrelevant Slack message
         script: |
-                curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=random&text=hi
+          curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=random&text=hi
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
