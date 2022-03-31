@@ -59,10 +59,10 @@ workflows:
         script: ./gradlew clean
       - name: Print command
         script: |
-                echo "curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=general&text=123"
+                echo "curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=aaa&text=555"
       - name: Send a irrelevant Slack message
         script: |
-                curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=general&text=123
+                curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=aaa&text=555
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
