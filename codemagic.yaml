@@ -62,7 +62,7 @@ workflows:
                 echo "curl -X GET -H 'Authorization: Bearer "$SLACK_BOT_TOKEN"' https://slack.com/api/chat.postMessage?channel=random&text=hi"
       - name: Send a irrelevant Slack message
         script: |
-                curl -X GET -H 'Authorization: Bearer "$SLACK_BOT_TOKEN"' https://slack.com/api/chat.postMessage?channel=random&text=hi
+                curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=random&text=hi
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
@@ -81,10 +81,10 @@ workflows:
         notify:
           failure: true
           success: true
-      firebase:
-        firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
-        android:
-          artifact_type: apk
-          app_id: $ANDROID_FIREBASE_APP_ID
-          groups:
-            - MyQAs
+      #firebase:
+      #  firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
+      #  android:
+      #    artifact_type: apk
+      #    app_id: $ANDROID_FIREBASE_APP_ID
+      #    groups:
+      #      - MyQAs
