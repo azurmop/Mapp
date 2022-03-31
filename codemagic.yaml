@@ -59,7 +59,7 @@ workflows:
         script: ./gradlew clean
       - name: Send a irrelevant Slack message
         script: |
-          curl -X GET -H 'Authorization: Bearer xoxb-3247694593395-3311805380502-cpFNya4QJnggZ9zVMh3FpfOj' https://slack.com/api/chat.postMessage?channel=general&text=test-cicd
+          curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' https://slack.com/api/chat.postMessage?channel=general&text=codemagic
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
