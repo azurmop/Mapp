@@ -46,7 +46,7 @@ workflows:
       cancel_previous_builds: true
       branch_patterns:
         - pattern: 'master'
-          include: false
+          include: true
           source: false
     #when:
     #  condition: event.pusher.name == "azurmop"
