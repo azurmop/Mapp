@@ -80,7 +80,7 @@ workflows:
           success: true
       email:
         recipients:
-          - azur.haljeta@gmail.com
+          - azur.haljeta@gmail.com, azur.haljeta@ministryofprogramming.com
         notify:
           success: true
           failure: true
