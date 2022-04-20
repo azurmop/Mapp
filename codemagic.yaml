@@ -78,6 +78,12 @@ workflows:
         notify:
           failure: true
           success: true
+      email:
+        recipients:
+          - azur.haljeta@gmail.com
+        notify:
+          success: true
+          failure: true
       firebase:
         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
         android:
