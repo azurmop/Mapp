@@ -65,7 +65,7 @@ workflows:
       - name: Update version code
         script: sed -i '' "s/versionCode=.*/versionCode=`date +%s`/g" version.properties
       - name: Set branch name
-        script: sed -i '' "s/branch=.*/branch=$CM_BRANCH" version.properties
+        script: sed -i '' "s|branch=.*|branch=$CM_BRANCH|g" version.properties
       - *run-unit-tests
       - name: Copy test results
         script: cp -r app/build/reports/tests/testReleaseUnitTest/ $CM_EXPORT_DIR/tests/
