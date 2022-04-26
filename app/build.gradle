@@ -21,6 +21,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
     }
 
     signingConfigs {
@@ -113,6 +115,23 @@ def loadProperties(filename) {
 
 def loadVersionCode() {
     loadProperties("version.properties")["versionCode"] as Integer
+}
+
+def loadBranchName() {
+    def name = loadProperties("version.properties")["branch"] as String
+    if (name?.trim()) {
+        name = gitBranch()
+    }
+    return name
+}
+
+def gitBranch() {
+    def branch = ""
+    def proc = "git rev-parse --abbrev-ref HEAD".execute()
+    proc.in.eachLine { line -> branch = line }
+    proc.err.eachLine { line -> println line }
+    proc.waitFor()
+    branch
 }
 
 
