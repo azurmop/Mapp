@@ -74,19 +74,19 @@ workflows:
     artifacts:
       - app/build/**/outputs/**/*.apk
     publishing:
-      slack:
-        channel: '#general'
-        notify_on_build_start: true
-        notify:
-          failure: true
-          success: true
-      email:
-        recipients:
-          - azur.haljeta@gmail.com
-          - azur.haljeta@ministryofprogramming.com
-        notify:
-          success: true
-          failure: true
+      #slack:
+      #  channel: '#general'
+      #  notify_on_build_start: true
+      #  notify:
+      #    failure: true
+      #    success: true
+      #email:
+      #  recipients:
+      #    - azur.haljeta@gmail.com
+      #    - azur.haljeta@ministryofprogramming.com
+      #  notify:
+      #    success: true
+      #    failure: true
       firebase:
         firebase_token: $FIREBASE_TOKEN
         android:
