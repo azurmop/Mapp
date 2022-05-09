@@ -127,16 +127,17 @@ def loadVersionCode() {
 }*/
 
 def loadBranchName() {
-    def branch
+    /*def branch
     if (isInCiCd()) {
         branch = System.getenv()["CM_BRANCH"]
     } else {
-        branch = gitBranch()
+        branch = extractGitBranch()
     }
-    return branch
+    return branch*/
+    return "n/a"
 }
 
-def gitBranch() {
+def extractGitBranch() {
     def branch = ""
     def proc = "git rev-parse --abbrev-ref HEAD".execute()
     proc.in.eachLine { line -> branch = line }
