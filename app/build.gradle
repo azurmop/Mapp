@@ -22,8 +22,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
-        buildConfigField "String", "IS_CICD", "\"${isInCiCd()}\""
+        // buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
+        // buildConfigField "String", "IS_CICD", "\"${isInCiCd()}\""
     }
 
     signingConfigs {
