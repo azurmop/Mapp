@@ -88,7 +88,8 @@ workflows:
           success: true
           failure: true
       firebase:
-        firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
+        firebase_token: $
+        firebase_service_account: $FIREBASE_TOKEN
         android:
           artifact_type: apk
           app_id: $ANDROID_FIREBASE_APP_ID
