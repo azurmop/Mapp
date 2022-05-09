@@ -82,15 +82,15 @@ workflows:
           success: true
       email:
         recipients:
-          - azur.haljeta@gmail.com
+          # - azur.haljeta@gmail.com
           - azur.haljeta@ministryofprogramming.com
         notify:
           success: true
           failure: true
-      firebase:
-        firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
-        android:
-          artifact_type: apk
-          app_id: $ANDROID_FIREBASE_APP_ID
-          groups:
-            - MyQAs
+      #firebase:
+      #  firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_JSON
+      #  android:
+      #    artifact_type: apk
+      #    app_id: $ANDROID_FIREBASE_APP_ID
+      #    groups:
+      #      - MyQAs
