@@ -22,7 +22,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
+        // buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
+        // buildConfigField "String", "IS_CICD", "\"${isInCiCd()}\""
     }
 
     signingConfigs {
@@ -117,15 +118,26 @@ def loadVersionCode() {
     loadProperties("version.properties")["versionCode"] as Integer
 }
 
-def loadBranchName() {
+/*def loadBranchName() {
     def name = loadProperties("version.properties")["branch"] as String
     if (name?.trim()) {
         name = gitBranch()
     }
     return name
+}*/
+
+def loadBranchName() {
+    /*def branch
+    if (isInCiCd()) {
+        branch = System.getenv()["CM_BRANCH"]
+    } else {
+        branch = extractGitBranch()
+    }
+    return branch*/
+    return "n/a"
 }
 
-def gitBranch() {
+def extractGitBranch() {
     def branch = ""
     def proc = "git rev-parse --abbrev-ref HEAD".execute()
     proc.in.eachLine { line -> branch = line }

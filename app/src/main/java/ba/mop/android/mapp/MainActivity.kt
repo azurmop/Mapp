@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             .text = """
                     Version name: ${BuildConfig.VERSION_NAME}
                     Version code: ${BuildConfig.VERSION_CODE}
-                    Branch: ${BuildConfig.BRANCH}
                     """.trimIndent()
     }
 
