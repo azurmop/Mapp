@@ -51,6 +51,10 @@ workflows:
     #when:
     #  condition: event.pusher.name == "azurmop"
     scripts:
+      - name: Echo echo
+        script: |
+          echo $FIREBASE_SERVICE_ACCOUNT
+          echo $ANDROID_FIREBASE_APP_ID
       - name: Echo Build number
         script: |
           echo $BUILD_NUMBER
