@@ -51,11 +51,6 @@ workflows:
     #when:
     #  condition: event.pusher.name == "azurmop"
     scripts:
-      - name: Echo echo
-        script: |
-          echo $FIREBASE_SERVICE_ACCOUNT
-          echo $ANDROID_FIREBASE_APP_ID
-          echo end
       - name: Echo Build number
         script: |
           echo $BUILD_NUMBER
@@ -64,7 +59,7 @@ workflows:
         script: ./gradlew clean
       - name: Send a irrelevant Slack message
         script: |
-          curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' 'https://slack.com/api/chat.postMessage?channel=general&text=codemagic'
+                curl -X GET -H 'Authorization: Bearer '"$SLACK_BOT_TOKEN"'' 'https://slack.com/api/chat.postMessage?channel=general&text=codemagic'
       - name: Decode keystore
         script: echo $ENCODED_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       - name: Update version code
@@ -77,25 +72,25 @@ workflows:
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
-      - app/build/outputs/**/release/*.apk
+      - app/build/**/outputs/**/*.apk
     publishing:
-      #slack:
-      #  channel: '#general'
-      #  notify_on_build_start: true
-      #  notify:
-      #    failure: true
-      #    success: true
-      #email:
-      #  recipients:
-      #    # - azur.haljeta@gmail.com
-      #    - azur.haljeta@ministryofprogramming.com
-      #  notify:
-      #    success: true
-      #    failure: true
+      slack:
+        channel: '#general'
+        notify_on_build_start: true
+        notify:
+          failure: true
+          success: true
+      email:
+        recipients:
+          - azur.haljeta@gmail.com
+          - azur.haljeta@ministryofprogramming.com
+        notify:
+          success: true
+          failure: true
       firebase:
         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
         android:
-          app_id: $ANDROID_FIREBASE_APP_ID
           artifact_type: apk
+          app_id: $ANDROID_FIREBASE_APP_ID
           groups:
             - MyQAs
