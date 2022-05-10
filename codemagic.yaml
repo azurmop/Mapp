@@ -76,7 +76,7 @@ workflows:
       - name: Build release apk
         script: ./gradlew assembleRelease
     artifacts:
-      - app/build/**/outputs/**/*.apk
+      - app/build/outputs/**/*.apk
     publishing:
       #slack:
       #  channel: '#general'
