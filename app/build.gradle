@@ -22,8 +22,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
-        // buildConfigField "String", "IS_CICD", "\"${isInCiCd()}\""
+        buildConfigField "String", "BRANCH", "\"${loadBranchName()}\""
+        buildConfigField "String", "IS_CICD", "\"${isInCiCd()}\""
     }
 
     signingConfigs {
@@ -127,14 +127,13 @@ def loadVersionCode() {
 }*/
 
 def loadBranchName() {
-    /*def branch
+    def branch
     if (isInCiCd()) {
         branch = System.getenv()["CM_BRANCH"]
     } else {
         branch = extractGitBranch()
     }
-    return branch*/
-    return "n/a"
+    return branch
 }
 
 def extractGitBranch() {
