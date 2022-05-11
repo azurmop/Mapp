@@ -102,7 +102,11 @@ dependencies {
 
 static def isInCiCd() {
     // CI=true is exported by Codemagic
-    return System.getenv()["CI"]
+    def ci = System.getenv()["CI"]
+    if (ci == null) {
+        return false
+    }
+    return ci
 }
 
 def loadProperties(filename) {

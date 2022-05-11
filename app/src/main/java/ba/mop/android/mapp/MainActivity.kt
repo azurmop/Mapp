@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                     Version name: ${BuildConfig.VERSION_NAME}
                     Version code: ${BuildConfig.VERSION_CODE}
                     Branch: ${BuildConfig.BRANCH}
-                    Env: ${BuildConfig.IS_CICD}
+                    Ci/Cd-built: ${BuildConfig.IS_CICD}
                     """.trimIndent()
     }
 
