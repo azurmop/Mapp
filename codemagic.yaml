@@ -80,13 +80,13 @@ workflows:
         notify:
           failure: true
           success: true
-      email:
-        recipients:
-          - azur.haljeta@gmail.com
-          - azur.haljeta@ministryofprogramming.com
-        notify:
-          success: true
-          failure: true
+      #email:
+      #  recipients:
+      #    - azur.haljeta@gmail.com
+      #    - azur.haljeta@ministryofprogramming.com
+      #  notify:
+      #    success: true
+      #    failure: true
       firebase:
         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
         android:
