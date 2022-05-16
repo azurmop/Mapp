@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // sample comment
+
     @SuppressLint("SetTextI18n")
     private fun showAppInfo() {
         findViewById<TextView>(R.id.info_text)
